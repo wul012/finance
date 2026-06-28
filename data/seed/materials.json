@@ -1,0 +1,103 @@
+[
+  {
+    "id": "shell",
+    "name": "贝壳货币",
+    "category": "实物货币材料",
+    "active_from_year": -3000,
+    "active_to_year": 1200,
+    "value_basis": "稀缺性、装饰性、可识别性和共同习俗",
+    "strengths": ["便于识别", "适合小规模交换", "具有装饰和礼仪价值"],
+    "limits": ["耐久性和分割性有限", "跨区域价值标准不稳定", "难以支撑大规模贸易"]
+  },
+  {
+    "id": "copper",
+    "name": "铜与青铜",
+    "category": "金属货币材料",
+    "active_from_year": -1200,
+    "active_to_year": 1900,
+    "value_basis": "金属耐久性、铸造能力和日常交易便利性",
+    "strengths": ["适合小额交易", "可铸造成统一形制", "供应相对充足"],
+    "limits": ["单位价值较低", "大额支付运输成本高", "易受工业需求影响"]
+  },
+  {
+    "id": "silver",
+    "name": "白银",
+    "category": "贵金属货币材料",
+    "active_from_year": -700,
+    "active_to_year": 1935,
+    "value_basis": "稀缺性、可分割性、耐久性和跨区域接受度",
+    "strengths": ["适合中等面额", "历史流通范围广", "兼具货币和商品属性"],
+    "limits": ["供应发现会改变相对价值", "与黄金比价长期波动", "在现代货币制度中地位下降"]
+  },
+  {
+    "id": "gold",
+    "name": "黄金",
+    "category": "贵金属货币材料",
+    "active_from_year": -600,
+    "active_to_year": 1971,
+    "value_basis": "高度稀缺、耐腐蚀、可分割、全球认可",
+    "strengths": ["适合储值", "跨政权和跨国界认可度高", "危机时期避险属性强"],
+    "limits": ["供应弹性有限", "不适合高频小额支付", "金本位会限制货币政策弹性"]
+  },
+  {
+    "id": "paper_note",
+    "name": "纸币",
+    "category": "信用货币载体",
+    "active_from_year": 1024,
+    "active_to_year": null,
+    "value_basis": "发行者信用、可兑换承诺或国家法偿地位",
+    "strengths": ["携带成本低", "适合大规模流通", "面额设计灵活"],
+    "limits": ["依赖发行纪律", "滥发会导致通胀", "需要制度和法律背书"]
+  },
+  {
+    "id": "fiat_money",
+    "name": "法定信用货币",
+    "category": "国家信用货币",
+    "active_from_year": 1971,
+    "active_to_year": null,
+    "value_basis": "国家信用、税收能力、央行制度和法偿规定",
+    "strengths": ["货币政策弹性高", "适合现代银行体系", "可支持信用扩张"],
+    "limits": ["可能发生通胀或信用危机", "汇率受政策和预期影响", "跨境信任依赖国家实力"]
+  },
+  {
+    "id": "bank_deposit",
+    "name": "银行存款货币",
+    "category": "金融机构信用",
+    "active_from_year": 1600,
+    "active_to_year": null,
+    "value_basis": "银行资产负债表、存款保险和清算体系",
+    "strengths": ["支付效率高", "可与信贷创造结合", "适合现代商业活动"],
+    "limits": ["依赖银行稳健性", "可能出现挤兑", "需要监管和最后贷款人"]
+  },
+  {
+    "id": "electronic_balance",
+    "name": "电子支付余额",
+    "category": "数字化信用载体",
+    "active_from_year": 1990,
+    "active_to_year": null,
+    "value_basis": "账户体系、支付网络、监管许可和用户信任",
+    "strengths": ["交易速度快", "边际成本低", "适合线上经济"],
+    "limits": ["依赖网络和平台", "存在隐私与安全问题", "跨平台互操作性受限"]
+  },
+  {
+    "id": "crypto_asset",
+    "name": "加密资产",
+    "category": "网络共识资产",
+    "active_from_year": 2009,
+    "active_to_year": null,
+    "value_basis": "算法稀缺性、网络共识、可验证账本和市场流动性",
+    "strengths": ["无需传统发行主体", "全球可转移", "供应规则透明"],
+    "limits": ["价格波动大", "监管不确定", "支付和估值共识仍在演化"]
+  },
+  {
+    "id": "cbdc",
+    "name": "央行数字货币",
+    "category": "数字化国家信用货币",
+    "active_from_year": 2020,
+    "active_to_year": null,
+    "value_basis": "央行负债、法偿属性、数字支付基础设施",
+    "strengths": ["兼具国家信用和数字化效率", "有利于支付基础设施升级", "可增强货币流通监测"],
+    "limits": ["需要平衡隐私和合规", "会影响商业银行负债结构", "跨境使用规则仍在探索"]
+  }
+]
+

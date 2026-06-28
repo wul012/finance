@@ -1,0 +1,42 @@
+asset_id,year,price,unit,source,note
+gold,1971,40.80,USD/oz,World Gold Council historical benchmark,布雷顿森林体系末期附近的观察点
+gold,1980,614.50,USD/oz,World Gold Council historical benchmark,高通胀和贵金属投机周期
+gold,2001,271.10,USD/oz,World Gold Council historical benchmark,长期低位观察点
+gold,2011,1571.50,USD/oz,World Gold Council historical benchmark,欧债危机和宽松政策背景
+gold,2015,1160.10,USD/oz,World Gold Council historical benchmark,美元走强和加息预期背景
+gold,2020,1769.60,USD/oz,World Gold Council historical benchmark,疫情与全球宽松背景
+gold,2024,2386.20,USD/oz,World Gold Council historical benchmark,央行购金和地缘风险背景
+silver,1971,1.54,USD/oz,LBMA historical benchmark,贵金属脱钩前后观察点
+silver,1980,20.98,USD/oz,LBMA historical benchmark,白银投机和高通胀周期
+silver,1993,4.31,USD/oz,LBMA historical benchmark,长期低位观察点
+silver,2011,35.12,USD/oz,LBMA historical benchmark,投资需求和欧债危机背景
+silver,2020,20.55,USD/oz,LBMA historical benchmark,疫情后流动性和工业需求修复
+silver,2024,28.30,USD/oz,LBMA historical benchmark,工业需求和贵金属配置背景
+copper,2001,0.71,USD/lb,Commodity historical benchmark,互联网泡沫后全球需求低迷
+copper,2006,3.05,USD/lb,Commodity historical benchmark,中国工业化和全球商品牛市
+copper,2009,2.34,USD/lb,Commodity historical benchmark,金融危机后修复
+copper,2011,4.00,USD/lb,Commodity historical benchmark,基建和宽松周期高位
+copper,2016,2.20,USD/lb,Commodity historical benchmark,制造业放缓和库存压力
+copper,2021,4.23,USD/lb,Commodity historical benchmark,疫情后需求恢复与供应约束
+copper,2024,4.15,USD/lb,Commodity historical benchmark,能源转型需求和全球制造业分化
+dxy,1985,144.00,index,ICE U.S. Dollar Index benchmark,广场协议前后美元高位
+dxy,1995,81.00,index,ICE U.S. Dollar Index benchmark,美元周期低位观察点
+dxy,2002,120.00,index,ICE U.S. Dollar Index benchmark,互联网泡沫后美元阶段高位
+dxy,2008,80.00,index,ICE U.S. Dollar Index benchmark,金融危机期间美元波动
+dxy,2014,90.00,index,ICE U.S. Dollar Index benchmark,美国货币政策转向预期
+dxy,2022,103.50,index,ICE U.S. Dollar Index benchmark,美联储快速加息和美元走强
+dxy,2024,101.50,index,ICE U.S. Dollar Index benchmark,高利率环境下的阶段观察点
+cny_usd,1994,8.70,CNY/USD,People's Bank of China historical benchmark,汇率并轨后观察点
+cny_usd,2005,8.11,CNY/USD,People's Bank of China historical benchmark,汇率形成机制改革附近
+cny_usd,2014,6.20,CNY/USD,People's Bank of China historical benchmark,人民币升值周期后期
+cny_usd,2020,6.90,CNY/USD,People's Bank of China historical benchmark,疫情冲击和美元周期
+cny_usd,2022,6.95,CNY/USD,People's Bank of China historical benchmark,美联储加息周期
+cny_usd,2024,7.30,CNY/USD,People's Bank of China historical benchmark,中美利差和美元强势背景
+bitcoin,2010,0.08,USD/BTC,Crypto market historical benchmark,早期市场价格观察点
+bitcoin,2013,754.00,USD/BTC,Crypto market historical benchmark,第一次广泛市场关注周期
+bitcoin,2017,13850.00,USD/BTC,Crypto market historical benchmark,ICO 和散户牛市周期
+bitcoin,2018,3742.00,USD/BTC,Crypto market historical benchmark,泡沫回落和监管压力
+bitcoin,2021,46306.00,USD/BTC,Crypto market historical benchmark,机构配置和宽松流动性周期
+bitcoin,2022,16547.00,USD/BTC,Crypto market historical benchmark,加息和行业信用事件冲击
+bitcoin,2024,93400.00,USD/BTC,Crypto market historical benchmark,现货 ETF 和减半叙事推动
+
