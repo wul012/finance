@@ -2,7 +2,7 @@
 
 金融与货币材料发展、价格涨跌历史及成因分析项目。
 
-本项目 v0.1.0 是一个离线可运行的第一版研究框架，重点不是预测价格，而是把“材料演变、金融制度、资产价格观察点、重大事件和原因解释”组织成可扩展的数据与分析模块。
+本项目 v0.2.0 在离线金融史框架上增加了 SOL 专题研究管线。重点不是预测价格，而是把市场数据、项目机制、事件证据、技术指标和个人持仓情景放进可复现的分析结构。
 
 ## 已完成功能
 
@@ -13,6 +13,9 @@
 - Markdown 报告生成：输出第一版项目研究报告。
 - CLI 命令行入口：可查看摘要、时间线、单资产分析和生成报告。
 - 单元测试：覆盖数据加载、时间线、趋势分析和报告生成。
+- SOL 实时专题：读取 CoinGecko 行情和 DeFiLlama TVL，计算 7/30/90 日涨跌、20 日均价、波动率和最大回撤。
+- 持仓情景：支持输入成本价或当前收益率，分开显示市场涨跌与个人盈亏，并生成回撤压力测试。
+- 引用式专题报告：输出 SOL 机制、催化剂、风险、里程碑和今日上涨解释框架。
 
 ## 模块结构
 
@@ -47,7 +50,16 @@ python -m finance_history summary
 python -m finance_history timeline --limit 12
 python -m finance_history analyze --asset gold --start 1971 --end 1980
 python -m finance_history report --output output/reports/first_version_report.md
+python -m finance_history sol --profit-pct 20
 ```
+
+SOL 命令默认写入 `output/reports/solana_v0.2.0_report.md`。若已知成本价和数量，可执行：
+
+```powershell
+python -m finance_history sol --entry-price 68 --quantity 10 --days 90
+```
+
+SOL 专题需要联网访问 CoinGecko 和 DeFiLlama；研究资料仍从 `data/seed/solana_research.json` 离线加载。实时请求失败时命令会明确返回失败，不会用旧价格冒充当前行情。
 
 运行测试：
 
@@ -58,12 +70,11 @@ python -m unittest discover -s tests
 
 ## 数据说明
 
-`data/seed` 中的数据是第一版研究样例数据，用于验证项目结构、分析流程和报告生成能力。价格点采用历史观察点形式，不构成投资建议，也不等同于实时行情数据库。后续版本可替换为 FRED、World Bank、IMF、交易所、央行或可信行情数据源。
+`data/seed` 中的通用数据是第一版研究样例，SOL 研究资料则用于第二版专题报告。实时市场数据来自公开 API，所有结果都带有观察时点。项目输出不构成投资建议。
 
 ## 版本规划
 
 - v0.1.0：完成离线研究框架、种子数据、分析服务、CLI、测试和报告。
-- v0.2.0：接入可配置数据源，增加数据校验和图表输出。
-- v0.3.0：增加 Web 可视化界面和交互式时间线。
+- v0.2.0：完成 SOL 实时行情、基本面研究、风险指标、持仓情景和专题报告。
+- v0.3.0：增加行情缓存、图表、Web 可视化界面和交互式时间线。
 - v1.0.0：形成稳定的数据模型、引用规范、报告模板和自动更新流程。
-

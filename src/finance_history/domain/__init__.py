@@ -7,6 +7,18 @@ from .models import (
     TimelineEntry,
     TrendWindow,
 )
+from .solana import (
+    HorizonReturn,
+    PositionScenario,
+    SolanaAnalysis,
+    SolanaMarketMetrics,
+    SolanaMarketSnapshot,
+    SolanaMilestone,
+    SolanaPositionAnalysis,
+    SolanaPricePoint,
+    SolanaResearchItem,
+    SolanaResearchProfile,
+)
 
 __all__ = [
     "Asset",
@@ -16,5 +28,14 @@ __all__ = [
     "PricePoint",
     "TimelineEntry",
     "TrendWindow",
+    "HorizonReturn",
+    "PositionScenario",
+    "SolanaAnalysis",
+    "SolanaMarketMetrics",
+    "SolanaMarketSnapshot",
+    "SolanaMilestone",
+    "SolanaPositionAnalysis",
+    "SolanaPricePoint",
+    "SolanaResearchItem",
+    "SolanaResearchProfile",
 ]
-

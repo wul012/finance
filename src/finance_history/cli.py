@@ -3,10 +3,17 @@ from __future__ import annotations
 import argparse
 import sys
 from collections import Counter
+from decimal import Decimal
 from pathlib import Path
 
-from finance_history.infrastructure.repository import SeedRepository
+from finance_history.infrastructure import (
+    SeedRepository,
+    SolanaMarketClient,
+    SolanaResearchRepository,
+)
 from finance_history.services.report import MarkdownReportBuilder
+from finance_history.services.solana_analysis import SolanaAnalyzer
+from finance_history.services.solana_report import SolanaMarkdownReportBuilder
 from finance_history.services.timeline import TimelineService, format_year
 from finance_history.services.trend_analysis import TrendAnalyzer, format_decimal
 
@@ -43,6 +50,27 @@ def build_parser() -> argparse.ArgumentParser:
         help="报告输出路径",
     )
 
+    sol_parser = subparsers.add_parser("sol", help="生成 SOL 实时专题分析")
+    sol_parser.add_argument(
+        "--days", type=int, default=90, help="技术指标历史窗口，范围 30-365 天"
+    )
+    position_group = sol_parser.add_mutually_exclusive_group()
+    position_group.add_argument(
+        "--entry-price", type=Decimal, default=None, help="SOL 持仓成本价（USD）"
+    )
+    position_group.add_argument(
+        "--profit-pct", type=Decimal, default=None, help="当前持仓收益率，用于反推成本价"
+    )
+    sol_parser.add_argument(
+        "--quantity", type=Decimal, default=None, help="可选持仓数量（SOL）"
+    )
+    sol_parser.add_argument(
+        "--output",
+        type=Path,
+        default=Path("output/reports/solana_v0.2.0_report.md"),
+        help="SOL 专题报告输出路径",
+    )
+
     return parser
 
 
@@ -65,6 +93,15 @@ def main(argv: list[str] | None = None) -> int:
         return _analyze(repository, args.asset, args.start, args.end)
     if args.command == "report":
         return _report(repository, args.output)
+    if args.command == "sol":
+        return _solana(
+            data_dir=args.data_dir,
+            days=args.days,
+            entry_price=args.entry_price,
+            profit_pct=args.profit_pct,
+            quantity=args.quantity,
+            output=args.output,
+        )
 
     parser.print_help()
     return 1
@@ -77,7 +114,7 @@ def _summary(repository: SeedRepository) -> int:
     prices = repository.load_price_points()
     material_types = Counter(material.category for material in materials)
 
-    print("Finance History Lab v0.1.0")
+    print("Finance History Lab v0.2.0")
     print(f"货币材料：{len(materials)} 类")
     print(f"资产对象：{len(assets)} 个")
     print(f"金融事件：{len(events)} 条")
@@ -87,7 +124,7 @@ def _summary(repository: SeedRepository) -> int:
     for category, count in sorted(material_types.items()):
         print(f"- {category}: {count}")
     print()
-    print("可分析资产：")
+    print("资产目录：")
     for asset in assets:
         print(f"- {asset.id}: {asset.name}（{asset.asset_type}）")
     return 0
@@ -143,6 +180,53 @@ def _report(repository: SeedRepository, output: Path) -> int:
     return 0
 
 
+def _solana(
+    *,
+    data_dir: Path | None,
+    days: int,
+    entry_price: Decimal | None,
+    profit_pct: Decimal | None,
+    quantity: Decimal | None,
+    output: Path,
+) -> int:
+    try:
+        client = SolanaMarketClient()
+        snapshot = client.fetch_snapshot()
+        history = client.fetch_history(days)
+        profile = SolanaResearchRepository(data_dir).load()
+        analysis = SolanaAnalyzer().analyze(
+            snapshot,
+            history,
+            profile,
+            entry_price_usd=entry_price,
+            profit_pct=profit_pct,
+            quantity=quantity,
+        )
+    except (OSError, TimeoutError, KeyError, StopIteration, ValueError) as exc:
+        print(f"SOL 分析失败：{exc}", file=sys.stderr)
+        return 2
+
+    report = SolanaMarkdownReportBuilder().build(analysis)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(report, encoding="utf-8")
+
+    print(f"SOL：{format_decimal(snapshot.price_usd)} USD")
+    print(f"24 小时涨跌：{format_decimal(snapshot.change_24h_pct)}%")
+    print(f"趋势：{analysis.metrics.trend}")
+    for item in analysis.metrics.returns:
+        print(f"{item.days} 日涨跌：{format_decimal(item.change_pct)}%")
+    if analysis.position is not None:
+        position = analysis.position
+        print(f"持仓成本价：{format_decimal(position.entry_price_usd)} USD")
+        print(f"持仓收益率：{format_decimal(position.return_pct)}%")
+        print(
+            "回到盈亏平衡所需回撤："
+            f"{format_decimal(position.breakeven_drawdown_pct)}%"
+        )
+    print(f"报告已生成：{output}")
+    return 0
+
+
 def _configure_stdout() -> None:
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
@@ -152,4 +236,3 @@ def _configure_stdout() -> None:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

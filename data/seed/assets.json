@@ -52,6 +52,14 @@
     "unit": "USD/BTC",
     "description": "比特币价格受减半周期、流动性、监管、机构配置、风险偏好和网络叙事共同影响。",
     "related_material_ids": ["crypto_asset"]
+  },
+  {
+    "id": "solana",
+    "name": "Solana",
+    "asset_type": "加密资产",
+    "quote_currency": "USD",
+    "unit": "USD/SOL",
+    "description": "SOL 是 Solana 网络的原生资产，价格受网络使用、质押与供给、生态流动性、机构渠道、宏观风险偏好和技术稳定性共同影响。",
+    "related_material_ids": ["crypto_asset"]
   }
 ]
-
